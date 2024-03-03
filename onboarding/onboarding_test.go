@@ -11,7 +11,7 @@ import (
 func TestTwirpServer(t *testing.T) {
 	client := onboarding.NewOnboardingProtobufClient("https://vercel-go-gamma.vercel.app", http.DefaultClient)
 	res, err := client.GetClaimCode(context.Background(), &onboarding.GetClaimCodeRequest{
-		Code: "dit is de code",
+		Code: "code1234",
 		Sn:   "sn1234",
 	})
 
