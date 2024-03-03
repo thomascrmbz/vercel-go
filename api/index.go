@@ -63,6 +63,11 @@ func init() {
     <meta charset="utf-8" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <style type="text/css">
     body {
         background-color: #f0f0f2;
