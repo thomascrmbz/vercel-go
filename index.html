@@ -1,13 +1,4 @@
-package handler
-
-import (
-	"fmt"
-	"net/http"
-)
-
-func Handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, `
-		<!DOCTYPE html/>
+<!DOCTYPE html/>
 <html>
     <head>
         <title>Go Runtime</title>
@@ -21,8 +12,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
         <script defer src="/_vercel/insights/script.js"></script>
     </head>
     <body>
-        <h1>Hello from go</h1>
+        <h1>Go Runtime</h1>
     </body>
 </html>
-`)
-}
