@@ -1,7 +1,3 @@
 {
-  "functions": {
-    "dashboard/index.go": {
-      "runtime": "provided.al2"
-    }
-  }
+  "routes": [{ "src": "/(.*)", "dest": "/api/" }]
 }
