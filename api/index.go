@@ -7,7 +7,6 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/thomascrmbz/vercel-go/onboarding"
-	"github.com/twitchtv/twirp"
 )
 
 var mux = chi.NewRouter()
@@ -25,7 +24,7 @@ func (*Service) ClaimLocation(context.Context, *onboarding.ClaimLocationRequest)
 	return &onboarding.ClaimLocationResponse{}, nil
 }
 
-func (*Service) SendClaimMail(context.Context, *onboarding.SendClaimMailRequest) (*onboarding.SendClaimMailResponse, error) {\
+func (*Service) SendClaimMail(context.Context, *onboarding.SendClaimMailRequest) (*onboarding.SendClaimMailResponse, error) {
 	return &onboarding.SendClaimMailResponse{}, nil
 }
 
@@ -33,10 +32,10 @@ func (*Service) GetClaimCode(ctx context.Context, req *onboarding.GetClaimCodeRe
 	fmt.Println(req.Code, req.Sn)
 
 	return &onboarding.GetClaimCodeResponse{
-		ClaimCode: "123456",
-		LocationId: "123",
-		Claimed: true,
-		ClaimedBy: nil,
+		ClaimCode:   "123456",
+		LocationId:  "123",
+		Claimed:     true,
+		ClaimedBy:   nil,
 		GeneratedBy: "me",
 	}, nil
 }
@@ -51,7 +50,9 @@ func init() {
 
 	svc := &Service{}
 	ts := onboarding.NewOnboardingServer(svc)
-	mux.Use(ts)
+	mux.Use(func(h http.Handler) http.Handler {
+		return ts
+	})
 
 	fmt.Println(mux.Routes())
 }
