@@ -68,6 +68,13 @@ func init() {
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <script
+      src="https://vercel.live/_next-live/feedback/feedback.js"
+      data-explicit-opt-in="true"
+      data-owner-id="DlGIgPbkveMpSRPz4FCqXEVb"
+      data-project-id="prj_ONIxCtPy24pfA0vQIMF67b3O9ToY"
+      data-branch="dev"
+    ></script>
     <style type="text/css">
     body {
         background-color: #f0f0f2;
