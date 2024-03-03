@@ -41,13 +41,6 @@ func (*Service) GetClaimCode(ctx context.Context, req *onboarding.GetClaimCodeRe
 }
 
 func init() {
-	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello, world!"))
-	})
-	mux.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("pong"))
-	})
-
 	svc := &Service{}
 	ts := onboarding.NewOnboardingServer(svc)
 	mux.Use(func(h http.Handler) http.Handler {
@@ -55,6 +48,13 @@ func init() {
 	})
 
 	fmt.Println(mux.Routes())
+
+	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, world!"))
+	})
+	mux.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("pong"))
+	})
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
