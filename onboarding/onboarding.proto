@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package harmony.energy.v0;
+option go_package = "proto/onboarding/v0;onboarding";
+
+service Onboarding {
+    rpc SetupLocation (SetupLocationRequest) returns (SetupLocationResponse);
+    rpc InstallerSetupLocation (InstallerSetupLocationRequest) returns (InstallerSetupLocationResponse);
+    rpc ClaimLocation (ClaimLocationRequest) returns (ClaimLocationResponse);
+    rpc SendClaimMail (SendClaimMailRequest) returns (SendClaimMailResponse);
+    rpc GetClaimCode (GetClaimCodeRequest) returns (GetClaimCodeResponse);
+}
+
+message SetupLocationRequest {
+    string sn = 1;
+    string code = 2;
+    string user = 3;
+}
+
+message SetupLocationResponse {
+}
+
+message InstallerSetupLocationRequest {
+    string sn = 1;
+    string code = 2;
+    string installer = 3;
+}
+
+message InstallerSetupLocationResponse {
+    string claim_code = 1;
+    int32 location_id = 2;
+}
+
+message ClaimLocationRequest {
+    string claim_code = 1;
+    string user = 2;
+}
+
+message ClaimLocationResponse {
+}
+
+message SendClaimMailRequest {
+    string claim_code = 1;
+    string email = 2;
+    optional string lang = 3;
+}
+
+message SendClaimMailResponse {
+}
+
+message GetClaimCodeRequest {
+    string sn = 1;
+    string code = 2;
+}
+
+message GetClaimCodeResponse {
+    string claim_code = 1;
+    string location_id = 2;
+    bool claimed = 3;
+    // claimed_at
+    optional string claimed_by = 5;
+    string generated_by = 6;
+    // valid_until
+}
