@@ -1,7 +1,7 @@
 {
   "functions": {
     "dashboard/index.go": {
-      "runtime": "vercel-go"
+      "runtime": "provided.al2"
     }
   }
 }
