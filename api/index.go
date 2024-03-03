@@ -43,9 +43,11 @@ func (*Service) GetClaimCode(ctx context.Context, req *onboarding.GetClaimCodeRe
 func init() {
 	svc := &Service{}
 	ts := onboarding.NewOnboardingServer(svc)
-	mux.Use(func(h http.Handler) http.Handler {
-		return ts
-	})
+	// mux.Use(func(h http.Handler) http.Handler {
+	// 	return ts
+	// })
+
+	mux.Handle(ts.PathPrefix(), ts)
 
 	fmt.Println(mux.Routes())
 
