@@ -1,26 +1,22 @@
 package handler
 
 import (
-	"fmt"
 	"net/http"
+
+	"github.com/go-chi/chi/v5"
 )
 
+var mux = chi.NewRouter()
+
+func init() {
+	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, world!"))
+	})
+	mux.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("pong"))
+	})
+}
+
 func Handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, `<!DOCTYPE html/>
-<html>
-    <head>
-        <title>Go Runtime</title>
-        <script>
-            window.va =
-                window.va ||
-                function () {
-                    (window.vaq = window.vaq || []).push(arguments);
-                };
-        </script>
-        <script defer src="/_vercel/insights/script.js"></script>
-    </head>
-    <body>
-        <h1>Hello From Go</h1>
-    </body>
-</html>`)
+	mux.ServeHTTP(w, r)
 }
