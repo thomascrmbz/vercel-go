@@ -9,10 +9,10 @@ import (
 )
 
 func TestTwirpServer(t *testing.T) {
-	client := onboarding.NewOnboardingProtobufClient("https://vercel-go-gamma.vercel.app/", http.DefaultClient)
+	client := onboarding.NewOnboardingProtobufClient("https://vercel-go-gamma.vercel.app", http.DefaultClient)
 	res, err := client.GetClaimCode(context.Background(), &onboarding.GetClaimCodeRequest{
 		Code: "dit is de code",
-		Sn:   "serie nummer",
+		Sn:   "sn1234",
 	})
 
 	if err != nil {

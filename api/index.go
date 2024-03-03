@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"github.com/thomascrmbz/vercel-go/onboarding"
 )
 
@@ -47,9 +48,19 @@ func init() {
 	// 	return ts
 	// })
 
-	mux.Handle(ts.PathPrefix(), ts)
+	mux.Use(middleware.CleanPath)
+	mux.Use(middleware.Logger)
+	mux.Use(middleware.Recoverer)
+	mux.Use(middleware.RequestID)
+	mux.Use(middleware.RealIP)
+	mux.Use(middleware.StripSlashes)
 
-	fmt.Println(mux.Routes())
+	// mux.Handle(ts.PathPrefix(), ts)
+	// mux.Group(func(r chi.Router) {
+	// 	r.Handle(ts.PathPrefix(), ts)
+	// })
+	// mux.Route(pattern string, fn func(r chi.Router))
+	mux.Mount(ts.PathPrefix(), ts)
 
 	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello, world!"))
@@ -57,6 +68,8 @@ func init() {
 	mux.Get("/ping", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("pong"))
 	})
+
+	fmt.Println(mux.Routes())
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
