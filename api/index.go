@@ -68,7 +68,7 @@ func init() {
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
-    <script
+    <script defer
       src="https://vercel.live/_next-live/feedback/feedback.js"
       data-explicit-opt-in="true"
       data-owner-id="DlGIgPbkveMpSRPz4FCqXEVb"
