@@ -68,6 +68,13 @@ func init() {
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <script defer
+      src="https://vercel.live/_next-live/feedback/feedback.js"
+      data-explicit-opt-in="true"
+      data-owner-id="DlGIgPbkveMpSRPz4FCqXEVb"
+      data-project-id="prj_ONIxCtPy24pfA0vQIMF67b3O9ToY"
+      data-branch="dev"
+    ></script>
     <style type="text/css">
     body {
         background-color: #f0f0f2;
@@ -99,10 +106,7 @@ func init() {
 
 <body>
 <div>
-    <h1>Example Domain</h1>
-    <p>This domain is for use in illustrative examples in documents. You may use this
-    domain in literature without prior coordination or asking for permission.</p>
-    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+    <h1>👋 Hello World!</h1>
 </div>
 </body>
 </html>`))
